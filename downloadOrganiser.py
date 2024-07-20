@@ -13,6 +13,7 @@ files = os.scandir(path)
 imgTypes = ['*.png', '*.jpeg', '*.jpg', '*.gif']
 dwldTypes = ['*.deb', '*.zip', '*.exe', '*.dmg']
 docTypes = ['*.doc', '*.docx', '*.xlsx', '*.pptx', '*.pdf']
+medTypes = ['*.mp4', '*.avi', '*.mov', '*.mkv', '*.webm', '*.mp3', '*.wav', '*.aac', '*.ogg']
 projTypes = ['*.md', '*.fig', '*.java', '*.py', '*.html', '*.css', '*.sql', '*.js']
 
 # Loop for each file within the given directory 
@@ -35,6 +36,12 @@ for file in files:
         p = Path('Documents')
         p.mkdir(exist_ok=True)
         shutil.move(file, 'Documents/')
+
+    # Checks if file matches medTypes items, then moves into 'Media' folder
+    elif any(fnmath.fnmatch(file, medType) for medType in medTypes):
+        p = Path('Media')
+        p.mkdir(exist_ok=True)
+        shutil.move(file, 'Media/')
 
     # Checks if file matches projtypes items, and then moves into 'Project_Files' folder
     elif any(fnmatch.fnmatch(file, projType) for projType in projTypes):
