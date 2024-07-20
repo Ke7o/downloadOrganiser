@@ -1,6 +1,5 @@
 import os 
 import shutil 
-import glob
 import fnmatch
 from pathlib import Path 
 
@@ -49,7 +48,4 @@ for file in files:
         p.mkdir(exist_ok=True)
         shutil.move(file, 'Other/')
         
-        
-
-
-    
+            
